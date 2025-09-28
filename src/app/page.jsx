@@ -1,21 +1,20 @@
-import { supabase } from './utils/supabase'
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export default async function Home() {
-  const { data: usuarios, error } = await supabase.from('usuarios').select('*')
-
-  if (error) {
-    console.error('Error fetching usuarios:', error)
-    return <div>Error fetching usuarios</div>
-  }
-
+export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-4xl font-bold mb-8">My Items</h1>
-      <ul>
-        {usuarios?.map((usuario) => (
-          <li key={usuario.id}>{usuario.nombre}</li>
-        ))}
-      </ul>
-    </main>
-  )
+    <div className="container mx-auto p-12 flex justify-center items-center h-[70vh]">
+      <Card className="w-full max-w-lg text-center shadow-2xl p-6">
+        <CardHeader>
+          <CardTitle className="text-5xl font-extrabold tracking-tight text-primary">
+            Diseño Web II
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Proyecto de CRUD con Next.js, Shadcn/ui y Supabase.
+          </p>
+        </CardContent>
+      </Card>
+    </div>
+  );
 }
